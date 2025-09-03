@@ -106,8 +106,6 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
         currentDate.setDate(currentDate.getDate() + 1);
       }
 
-      setOriginalSchedules(JSON.parse(JSON.stringify(defaultSchedules)));
-
       const newSchedules: DaySchedule[] = [];
       const processDate = new Date(startDate);
 
@@ -207,6 +205,7 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
       }
 
       setSchedules(newSchedules);
+      setOriginalSchedules(JSON.parse(JSON.stringify(newSchedules)));
       setHasChanges(false);
     } else if (!timelineData && !isLoading) {
       initializeSchedules();
