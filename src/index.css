@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for timeline blocks */
+.timeline-block {
+  width: 10px;
+  height: 32px;
+  background-color: #e5e7eb;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-right: 0;
+}
+
+.timeline-block.rest {
+  background-color: #4CAF50; /* Green for Rest */
+}
+
+.timeline-block.work {
+  background-color: #FF9800; /* Orange/Yellow for Work */
+}
+
+.timeline-block.default {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+}
+
+.timeline-block:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Hour labels */
+.hour-label {
+  width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.hour-icon {
+  font-size: 1.2rem;
+  z-index: 10;
+}
