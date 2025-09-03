@@ -175,7 +175,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         </div>
 
         {/* Summary column at the end */}
-        <div className="flex flex-col min-w-[160px]">
+        <div className="flex flex-col min-w-[180px]">
           <div className="h-8 flex flex-col items-center justify-center text-xs text-gray-800 bg-gray-50 border border-gray-300">
             <div className="text-xs">Total Work:</div>
             <div className="text-xs font-bold">{formatDuration(totalWork)}</div>
