@@ -1,6 +1,6 @@
-import React from 'react';
-import { format, addDays } from 'date-fns';
-import { useDrivers } from '../../api';
+import React from "react";
+import { format, addDays } from "date-fns";
+import { useDrivers } from "../../api";
 
 interface AppHeaderProps {
   selectedDriver: string;
@@ -22,8 +22,8 @@ const AppHeader: React.FC<AppHeaderProps> = ({
   const { data: drivers, isLoading, error } = useDrivers();
 
   const handleQuickFilter = (days: number) => {
-    const newStartDate = format(addDays(new Date(), -days), 'yyyy-MM-dd');
-    const newEndDate = format(new Date(), 'yyyy-MM-dd');
+    const newStartDate = format(addDays(new Date(), -days), "yyyy-MM-dd");
+    const newEndDate = format(new Date(), "yyyy-MM-dd");
     onStartDateChange(newStartDate);
     onEndDateChange(newEndDate);
   };
@@ -41,19 +41,21 @@ const AppHeader: React.FC<AppHeaderProps> = ({
             {isLoading ? (
               <option>Loading drivers...</option>
             ) : (
-              drivers?.map(driver => (
-                <option key={driver.id} value={driver.name}>{driver.name}</option>
+              drivers?.map((driver) => (
+                <option key={driver.id} value={driver.name}>
+                  {driver.name}
+                </option>
               ))
             )}
           </select>
-          
+
           <input
             type="date"
             value={startDate}
             onChange={(e) => onStartDateChange(e.target.value)}
             className="p-2 border border-gray-300 rounded text-sm"
           />
-          
+
           <input
             type="date"
             value={endDate}
@@ -65,19 +67,19 @@ const AppHeader: React.FC<AppHeaderProps> = ({
         <div>Quick Filters</div>
         <button
           onClick={() => handleQuickFilter(7)}
-          className="px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm hover:bg-blue-200"
+          className="px-3 py-1 bg-green-100 text-green-700 rounded text-sm hover:bg-green-200"
         >
           Last 7 days
         </button>
         <button
           onClick={() => handleQuickFilter(14)}
-          className="px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm hover:bg-blue-200"
+          className="px-3 py-1 bg-green-100 text-green-700 rounded text-sm hover:bg-green-200"
         >
           Last 14 days
         </button>
         <button
           onClick={() => handleQuickFilter(28)}
-          className="px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm hover:bg-blue-200"
+          className="px-3 py-1 bg-green-100 text-green-700 rounded text-sm hover:bg-green-200"
         >
           Last 28 days
         </button>
@@ -88,7 +90,6 @@ const AppHeader: React.FC<AppHeaderProps> = ({
           Error loading drivers: {error.message}
         </div>
       )}
-
     </div>
   );
 };

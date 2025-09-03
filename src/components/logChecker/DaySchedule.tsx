@@ -25,23 +25,20 @@ const DaySchedule: React.FC<DayScheduleProps> = ({
   };
 
   return (
-    <div className="bg-white p-5 rounded-lg shadow-md mb-5">
-      <div className="text-2xl font-semibold mb-4 text-gray-800">
+    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 mb-5">
+      <div className="text-2xl mb-4 text-gray-800">
         {formatDate(schedule.date)}
       </div>
 
       <div className="grid grid-cols-4 gap-4 mb-5 p-4 bg-gray-50 rounded-lg">
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-gray-600 font-medium">Driver</span>
-          <span className="font-semibold text-gray-800">
+          <span className="text-sm text-gray-400 font-medium">Driver</span>
+          <span className="text-gray-800 text-sm font-medium">
             {selectedDriver?.name || "Loading..."}
           </span>
         </div>
 
-        <div className="flex flex-col gap-1">
-          <span className="text-sm text-gray-600 font-medium">
-            Schedule Type
-          </span>
+        <div className="flex flex-col gap-1 w-4/5">
           <select
             className="p-2 border border-gray-300 rounded bg-white text-sm"
             defaultValue="Standard Solo"
@@ -54,17 +51,17 @@ const DaySchedule: React.FC<DayScheduleProps> = ({
         </div>
 
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-gray-600 font-medium">Time Zone</span>
-          <span className="font-semibold text-gray-800">
+          <span className="text-sm text-gray-400 font-medium">Time Zone</span>
+          <span className="text-gray-800 text-sm font-medium">
             {formatTimezoneDisplay()}
           </span>
         </div>
 
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-gray-600 font-medium">
-            Licence Number
+          <span className="text-sm text-gray-400 font-medium">
+            License Number
           </span>
-          <span className="font-semibold text-gray-800">
+          <span className="text-gray-800 text-sm font-medium">
             {selectedDriver?.licenseNumber || "Loading..."}
           </span>
         </div>

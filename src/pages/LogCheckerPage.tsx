@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import { format, addDays } from 'date-fns';
-import AppHeader from '../components/layout/AppHeader';
-import TimelineContainer from '../components/logChecker/TimelineContainer';
+import React, { useState, useEffect } from "react";
+import { format, addDays } from "date-fns";
+import AppHeader from "../components/layout/AppHeader";
+import TimelineContainer from "../components/logChecker/TimelineContainer";
+import { useDrivers } from "../api";
 
 const LogCheckerPage: React.FC = () => {
-  const [selectedDriver, setSelectedDriver] = useState<string>('Sachin Meelu');
-  const [startDate, setStartDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'));
-  const [endDate, setEndDate] = useState<string>(format(addDays(new Date(), 6), 'yyyy-MM-dd'));
+  const { data: drivers } = useDrivers();
+  const [selectedDriver, setSelectedDriver] = useState<string>("");
+  const [startDate, setStartDate] = useState<string>(
+    format(new Date(), "yyyy-MM-dd")
+  );
+  const [endDate, setEndDate] = useState<string>(
+    format(addDays(new Date(), 6), "yyyy-MM-dd")
+  );
+
+  useEffect(() => {
+    if (drivers && drivers.length > 0 && !selectedDriver) {
+      setSelectedDriver(drivers[0].name);
+    }
+  }, [drivers, selectedDriver]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -19,7 +31,7 @@ const LogCheckerPage: React.FC = () => {
           onStartDateChange={setStartDate}
           onEndDateChange={setEndDate}
         />
-        
+
         <TimelineContainer
           selectedDriver={selectedDriver}
           startDate={startDate}

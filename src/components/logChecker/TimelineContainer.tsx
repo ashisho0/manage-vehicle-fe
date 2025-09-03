@@ -439,14 +439,14 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
           <button
             onClick={handleSave}
             disabled={saveTimelineMutation.isPending}
-            className="px-6 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+            className="px-6 py-1 rounded-lg text-sm text-white bg-green-600 hover:bg-green-700 disabled:opacity-50"
           >
-            {saveTimelineMutation.isPending ? "Saving..." : "Save Changes"}
+            {saveTimelineMutation.isPending ? "Saving..." : "Save"}
           </button>
         )}
         <button
           onClick={handleReset}
-          className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
+          className="px-6 py-1 bg-white text-sm text-green-600 border-2 border-green-600 rounded-lg hover:bg-green-50"
         >
           Reset
         </button>
