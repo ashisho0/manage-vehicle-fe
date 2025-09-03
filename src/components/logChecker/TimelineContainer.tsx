@@ -3,6 +3,7 @@ import { useDrivers, useTimeline, useSaveTimeline } from "../../api";
 import { TimelineEvent, DaySchedule } from "../../types";
 import DayScheduleComponent from "./DaySchedule";
 import { format } from "date-fns";
+import { getCurrentTimezoneOffset } from "../../utils/timezone";
 
 interface TimelineContainerProps {
   selectedDriver: string;
@@ -65,7 +66,8 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
         date: dateStr,
         blocks: blocks.map((block) => ({
           ...block,
-          startTime: dateStr + "T" + block.time + ":00+10:00",
+          startTime:
+            dateStr + "T" + block.time + ":00" + getCurrentTimezoneOffset(),
         })),
         totalWork: 0,
         totalRest: 0,
@@ -93,7 +95,8 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
         const dateStr = format(currentDate, "yyyy-MM-dd");
         const blocks = generateTimeBlocks().map((block) => ({
           ...block,
-          startTime: dateStr + "T" + block.time + ":00+10:00",
+          startTime:
+            dateStr + "T" + block.time + ":00" + getCurrentTimezoneOffset(),
         }));
 
         defaultSchedules.push({
@@ -116,7 +119,8 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
         if (dayData && dayData.timeline && Array.isArray(dayData.timeline)) {
           const blocks = generateTimeBlocks().map((block) => ({
             ...block,
-            startTime: dateStr + "T" + block.time + ":00+00:00",
+            startTime:
+              dateStr + "T" + block.time + ":00" + getCurrentTimezoneOffset(),
           }));
 
           dayData.timeline.forEach((apiBlock, index) => {
@@ -190,7 +194,8 @@ const TimelineContainer: React.FC<TimelineContainerProps> = ({
         } else {
           const blocks = generateTimeBlocks().map((block) => ({
             ...block,
-            startTime: dateStr + "T" + block.time + ":00+00:00",
+            startTime:
+              dateStr + "T" + block.time + ":00" + getCurrentTimezoneOffset(),
           }));
 
           newSchedules.push({

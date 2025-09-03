@@ -2,6 +2,7 @@ import React from "react";
 import { DaySchedule as DayScheduleType, Driver } from "../../types";
 import { Timeline } from "./Timeline";
 import { format, parseISO } from "date-fns";
+import { formatTimezoneDisplay } from "../../utils/timezone";
 
 interface DayScheduleProps {
   schedule: DayScheduleType;
@@ -54,7 +55,9 @@ const DaySchedule: React.FC<DayScheduleProps> = ({
 
         <div className="flex flex-col gap-1">
           <span className="text-sm text-gray-600 font-medium">Time Zone</span>
-          <span className="font-semibold text-gray-800">VIC (UTC+10:00)</span>
+          <span className="font-semibold text-gray-800">
+            {formatTimezoneDisplay()}
+          </span>
         </div>
 
         <div className="flex flex-col gap-1">
